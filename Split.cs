@@ -1,16 +1,34 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace RegexFileCopy
 {
-    class Program
+    class Split
     {
-        static void Main(string[] args)
+        public void inputs()
         {
+            Console.Write("Directory path: ");
+            string path = Convert.ToString(Console.Read());
+
+            Console.Write("\n\nFile name: ");
+            string filename = Convert.ToString(Console.Read());
+
+            Console.Write("\n\nSections: ");
+            int sections = Convert.ToInt32(Console.Read());
+        }
+        public string generateFileName(string filename, int section)
+        {
+            return "";
+        }
+        public static void Main(string[] args)
+        {
+            Split split = new Split();
+
             int n = 1;
             int a = 1;
-            int b = 3310;
+            int b = 10;
             // Set the regex P_Pattern
             string P_pattern = "";
             // Set the regex POS_pattern
@@ -34,8 +52,10 @@ namespace RegexFileCopy
             //System.Console.WriteLine(P_pattern);
 
             string file_name = String.Format("GST_CLAMSHELL_L1_{0}.LS", n);
-            System.Console.WriteLine(file_name);
+            Console.WriteLine(file_name);
 
+            Console.WriteLine(split.generateFileName("GST_CLAMSHELL_L1", n));
+            
             // Set the source file path and destination file path
             string sourceFilePath = @"C:\Users\groupsix\Documents\Avi\SplitProg\Split_LS\GST_CLAMSHELL_L1.LS";
             string destinationFilePath = @"C:\Users\groupsix\Documents\Avi\SplitProg\Split_LS\" + file_name;
@@ -82,7 +102,7 @@ namespace RegexFileCopy
                         // If the block matches, write it to the destination file
                         using (StreamWriter writer = new StreamWriter(destinationFilePath, true))
                         {
-                            writer.Write("\n" + line + "_" + n + "\n");
+                            writer.WriteLine("\n" + line + "_" + n);
                             line = reader.ReadLine();
 
                             block += line + "\n";
@@ -90,7 +110,7 @@ namespace RegexFileCopy
                             {
                                 block += reader.ReadLine() + "\n";
                             }
-                            writer.Write(block);
+                            writer.WriteLine(block);
                             block = "";
                         }
                     }
@@ -99,7 +119,7 @@ namespace RegexFileCopy
                         // If the block matches, write it to the destination file
                         using (StreamWriter writer = new StreamWriter(destinationFilePath, true))
                         {
-                            writer.Write("\n"+line+"\n");
+                            writer.WriteLine(line);
                         }
                         POS_section = true;
                     }
@@ -112,7 +132,7 @@ namespace RegexFileCopy
                             // If the block matches, write it to the destination file
                             using (StreamWriter writer = new StreamWriter(destinationFilePath, true))
                             {
-                                writer.Write(line + "\n");
+                                writer.WriteLine(line);
                             }
                         }
                     }
@@ -137,7 +157,7 @@ namespace RegexFileCopy
                 }
                 using (StreamWriter writer = new StreamWriter(destinationFilePath, true))
                 {
-                    writer.Write("/END" + "\n");
+                    writer.WriteLine("/END");
                 }
             }
         }

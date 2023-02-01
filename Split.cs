@@ -26,9 +26,9 @@ namespace RegexFileCopy
         {
             Split split = new Split();
 
-            int n = 1;
-            int a = 1;
-            int b = 10;
+            int n = 3;
+            int a = 1924;
+            int b = 2959;
             // Set the regex P_Pattern
             string P_pattern = "";
             // Set the regex POS_pattern
@@ -51,13 +51,13 @@ namespace RegexFileCopy
             POS_pattern = POS_pattern.Substring(0, POS_pattern.Length - 1);
             //System.Console.WriteLine(P_pattern);
 
-            string file_name = String.Format("GST_CLAMSHELL_L1_{0}.LS", n);
+            string file_name = String.Format("GST_CLAMSHELL_L4_{0}.LS", n);
             Console.WriteLine(file_name);
 
-            Console.WriteLine(split.generateFileName("GST_CLAMSHELL_L1", n));
+            //Console.WriteLine(split.generateFileName("GST_CLAMSHELL_L3", n));
             
             // Set the source file path and destination file path
-            string sourceFilePath = @"C:\Users\groupsix\Documents\Avi\SplitProg\Split_LS\GST_CLAMSHELL_L1.LS";
+            string sourceFilePath = @"C:\Users\groupsix\Documents\Avi\SplitProg\Split_LS\GST_CLAMSHELL_L4.LS";
             string destinationFilePath = @"C:\Users\groupsix\Documents\Avi\SplitProg\Split_LS\" + file_name;
 
             using (FileStream fs = File.Open(destinationFilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
